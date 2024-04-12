@@ -1,0 +1,75 @@
+a{
+    color: #000;
+    text-decoration: none;
+}
+
+.col-6 input{
+    border-radius: 10px;
+    width: 100%;
+    padding-left: 10px;
+    height: 130px;
+    margin-bottom: 100px;
+}
+
+.name input{
+    border-radius: 10px;
+    width: 90%;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    height: 60px;
+}
+
+.school input{
+    border-radius: 10px;
+    width: 90%;
+    padding-left: 10px;
+    height: 60px;
+}
+
+.new-word{
+    width: 100%;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px 0;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.new-word input{
+    border-radius: 10px;
+    width: 40%;
+    margin: 20px;
+}
+
+.inner-add{
+    border-radius: 50%;
+    border: #000 1px solid;
+    padding: 0 8px; 
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.inner-add:hover{
+    background-color: #0C31A3;
+    color: white;
+}
+
+.inner-display{
+    width: 100%;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px 0;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.inner-display .word, .inner-display .mean{
+    width: 45%;
+    margin: 20px;
+}
+

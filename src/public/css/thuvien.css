@@ -1,0 +1,36 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+.inner-name .container .inner-add{
+    background-color: white;
+    padding: 7px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.inner-name .container .inner-add:hover{
+    background-color: #0C31A3;
+    color: white;
+}
+
+.inner-content .container .row .z a{
+    border-radius: 30px;
+    background-color: white;
+    width: 100%;
+    height: 150px;
+    margin: 50px 0px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    padding-left: 30px;
+    flex-direction: column;
+}
+
+.inner-content .container .row .z a:hover{
+    background-color: #e6e6e6;
+}
+
+.inner-content .container .row .z .inner-name{
+    font-weight: bold;
+}
