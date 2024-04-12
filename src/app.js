@@ -10,13 +10,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // console.log(path.join(__dirname, 'public'));
 
 // template engine
-app.set('views', `${__dirname}/resources/views`);
 app.set('view engine', 'ejs');
-
+app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.render('flashcard');
 });
+
+
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
