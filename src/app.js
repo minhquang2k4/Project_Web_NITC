@@ -38,6 +38,13 @@ app.get('/hocphan', (req, res) => {
   res.render('hpcuaban');
 });
 
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+app.get('/register', (req, res) => {
+  res.render('signup');
+});
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
