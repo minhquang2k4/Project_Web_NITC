@@ -1,0 +1,264 @@
+body {
+    font-family: "Playfair Display", serif;
+    background-color: rgb(240, 240, 240);
+    font-size: 25px;
+}
+
+/* header */
+.header {
+    margin: 0;
+    padding: 0;
+    z-index: 9999;
+    position: fixed;
+    width: 100%;
+}
+
+.header .container {
+    margin-inline: 15px;
+    padding: 0 30px;
+    background: #0C31A3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.header .container .inner-menu {
+    display: flex;
+    margin-left: -130px;
+}
+
+.header .container .inner-menu a {
+    text-decoration: none;
+    color: white;
+    margin-left: 60px;
+}
+
+.header .container .inner-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -20px;
+}
+
+.header .container .inner-logo .text {
+    color: white;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.header .container .inner-logo img {
+    width: 120px;
+    height: auto;
+    border-radius: 50%;
+    margin: -25px -20px;
+}
+
+.header .container .inner-icon i {
+    font-size: 20px;
+    color: white;
+    background: rgba(255, 255, 255, 0.133);
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* end header */
+
+/* main */
+.inner-name .container {
+    display: flex;
+    padding-top: 150px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    justify-content: space-between;
+}
+
+.inner-name .container .delete{
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.inner-name .container .delete:hover{
+    background-color: #0C31A3;
+    color: white;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 600px;
+    height: 300px;
+    perspective: 1000px;
+    /* Remove this if you don't want the 3D effect */
+    border-radius: 30px;
+    margin: auto;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+    border-radius: 30px;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: white;
+    color: black;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.row .col-12 .inner {
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 100px;
+    justify-content: center;
+}
+
+
+.row .col-12 .inner .inner-back {
+    display: flex;
+    background-color: white;
+    width: 150px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 75px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.row .col-12 .inner .inner-volume {
+    display: flex;
+    background-color: white;
+    width: 150px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 75px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+
+.row .col-12 .inner .inner-next {
+    display: flex;
+    background-color: white;
+    width: 150px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.row .col-12 .inner .inner-back:hover, .row .col-12 .inner .inner-volume:hover, .row .col-12 .inner .inner-next:hover{
+    background-color: #0C31A3;
+    color: white;
+}
+
+
+.card-inner {
+    width: 600px;
+    height: 300px;
+    background-color: white;
+    margin: auto;
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+}
+
+.card-inner h1 {
+    margin: auto;
+}
+
+.dap-an {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+
+.da {
+    width: 260px;
+    height: 70px;
+    background-color: white;
+    margin: 30px;
+    border-radius: 20px;
+    display: flex;
+    cursor: pointer;
+}
+
+.da:hover {
+    background-color: #0C31A3;
+    color: white;
+}
+
+.da h1 {
+    margin: auto;
+}
+
+/* end main */
+
+
+/* footer */
+.footer {
+    padding: 0px;
+    margin: 0px;
+}
+
+.footer .container {
+    padding: 0px;
+}
+
+.footer .container .inner-backgr {
+    background-image: url(/image/footer.png);
+    display: flex;
+    width: 100%;
+    height: 412px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* end footer */

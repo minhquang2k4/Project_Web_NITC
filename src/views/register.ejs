@@ -22,7 +22,6 @@
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
         }
-
         .gradient-custom-4 {
             /* fallback for old browsers */
             background: #84fab0;
@@ -46,8 +45,13 @@
                     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5">
-                                <h2 class="text-uppercase text-center mb-5">Đăng nhập</h2>
+                                <h2 class="text-uppercase text-center mb-5">Register</h2>
                                 <form>
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                                        <label class="form-label" for="form3Example1cg">Full name</label>
+                                    </div>
+
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                                         <label class="form-label" for="form3Example3cg">Email</label>
@@ -59,16 +63,20 @@
                                         <label class="form-label" for="form3Example4cg">Password</label>
                                     </div>
 
-                                    <div class="d-flex justify-content-center">
-                                        <button type="button" data-mdb-button-init data-mdb-ripple-init
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng
-                                            nhập</button>
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                        <input type="password" id="form3Example4cdg"
+                                            class="form-control form-control-lg" />
+                                        <label class="form-label" for="form3Example4cdg">Confirm password</label>
                                     </div>
 
-                                    <p class="text-center text-muted mt-5 mb-0">bạn chưa có tài khoản?
-                                        <a href="#!" class="fw-bold text-body"><u>Đăng ký</u></a>
-                                    </p>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" data-mdb-button-init data-mdb-ripple-init
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                    </div>
 
+                                    <p class="text-center text-muted mt-5 mb-0">have an account?
+                                        <a href="http://localhost:3000/login" class="fw-bold text-body"><u>Login</u></a>
+                                    </p>
                                 </form>
 
                             </div>

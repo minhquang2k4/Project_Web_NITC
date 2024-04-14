@@ -15,27 +15,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (req, res) => {
-  res.send('chao mung den voi chung toi');
-});
-
-app.get('/flashcard', (req, res) => {
-  res.render('flashcard');
-});
-
-app.get('/chondapan', (req, res) => {
-  res.render('chondapan');
-});
-
-app.get('/thuvien', (req, res) => {
-  res.render('thuvien');
-});
-
-app.get('/addhocphan', (req, res) => {
-  res.render('taohpmoi');
-});
-
-app.get('/hocphan', (req, res) => {
-  res.render('hpcuaban');
+  res.render('index');
 });
 
 app.get('/login', (req, res) => {
@@ -43,7 +23,27 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-  res.render('signup');
+  res.render('register');
+});
+
+app.get('/library', (req, res) => {
+  res.render('your-library');
+});
+
+app.get('/library/create', (req, res) => {
+  res.render('create');
+});
+
+app.get('/library/detail', (req, res) => {
+  res.render('library-detail');
+});
+
+app.get('/library/detail/flashcard', (req, res) => {
+  res.render('flashcard');
+});
+
+app.get('/library/detail/quizze', (req, res) => {
+  res.render('quizze');
 });
 
 app.listen(port, () => {
