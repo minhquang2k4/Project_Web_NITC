@@ -104,9 +104,6 @@
                 <div class="name" id="name">
                     Xe cộ
                 </div>
-                <div class="school" id="school">
-                    NEU
-                </div>
             </div>
             <div class="col-md-6 col-sm-12" id="description">
                 Các loại xe phổ biến trong thành phố
@@ -121,12 +118,12 @@
             </h3>
         </div>
         <div class="row">
-            <a href="#" class="col-3" id="flashcard">
+            <a href="http://localhost:3000/library/detail/flashcard" class="col-3" id="flashcard">
                 <h4 style="padding-top: 7px;">
                     Flashcard
                 </h4>
             </a>
-            <a href="#" class="col-3" id="quizzes" style="background-color: #7335b7; color: #fff;">
+            <a href="http://localhost:3000/library/detail/quizze" class="col-3" id="quizzes" style="background-color: #7335b7; color: #fff;">
                 <h4 style="padding-top: 7px;">
                     Quizzes
                 </h4>
@@ -138,8 +135,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="card-inner">
+                    <div class="card-inner" id="text-to-speech">
                         <h1>hello</h1>
+                        <i class="fa-solid fa-volume-high" onclick="speak()" ></i>
                     </div>
                 </div>
             </div>
@@ -175,7 +173,7 @@
         <!-- info section -->
         <section class="info_section ">
             <div class="container">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-6 col-lg-4 mx-auto ">
                         <div class="info_detail">
                             <h4>
@@ -225,7 +223,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         <!-- end info section -->
@@ -240,6 +238,7 @@
     <!-- bootstrap js -->
     <script src="/js/bootstrap.js"></script>
     <script src="/js/custom.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>

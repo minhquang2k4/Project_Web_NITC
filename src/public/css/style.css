@@ -972,7 +972,7 @@ a {
   width: 90%;
   padding-left: 10px;
   margin-bottom: 10px;
-  height: 60px;
+  height: 130px;
 }
 
 .school input {
@@ -1022,15 +1022,14 @@ a {
   border-radius: 10px;
   width: 90%;
   padding-left: 10px;
-  margin-bottom: 10px;
-  height: 60px;
+  margin-bottom: 20px;
+  height: 130px;
   background-color: white;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-
 }
-
+/* 
 #school {
   border-radius: 10px;
   width: 90%;
@@ -1041,7 +1040,7 @@ a {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-}
+} */
 
 #description {
   border-radius: 10px;
@@ -1113,6 +1112,8 @@ a {
   /* Remove this if you don't want the 3D effect */
   border-radius: 30px;
   margin: auto;
+  transition: 0.05s;
+  cursor: pointer;
 }
 
 /* This container is needed to position the front and back side */
@@ -1126,8 +1127,11 @@ a {
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+/* .flip-card:hover .flip-card-inner {
+  transform: rotateX(180deg);
+} */
+.flip {
+  transform: rotateX(180deg);
 }
 
 /* Position the front and back side */
@@ -1156,11 +1160,11 @@ a {
 .flip-card-back {
   background-color: #7335b7;
   color: rgb(255, 255, 255);
-  transform: rotateY(180deg);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  transform: rotateX(180deg);
 }
 
 
@@ -1185,6 +1189,9 @@ a {
   cursor: pointer;
 }
 
+.move-back {
+  transform: translateX(50px);
+}
 
 .row .col-12 .inner .inner-volume {
   display: flex;
@@ -1212,6 +1219,10 @@ a {
   cursor: pointer;
 }
 
+.move-next {
+  transform: translateX(-50px);
+}
+
 .row .col-12 .inner .inner-back:hover,
 .row .col-12 .inner .inner-volume:hover,
 .row .col-12 .inner .inner-next:hover {
@@ -1229,12 +1240,23 @@ a {
   display: flex;
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.1);
   border-radius: 30px;
+  position: relative;
 }
 
 .card-inner h1 {
   margin: auto;
 }
 
+.card-inner i{
+  font-size: x-large;
+  cursor: pointer;
+  display: inline;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 10%;
+  left: 90%;
+  color: rgb(0, 0, 0);
+}
 .dap-an {
   display: flex;
   justify-content: center;
