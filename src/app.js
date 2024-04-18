@@ -49,5 +49,3 @@ app.get('/library/detail/quizze', (req, res) => {
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
-// abcrifj
-// hihfhgo
