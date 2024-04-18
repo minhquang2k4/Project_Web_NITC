@@ -23,8 +23,7 @@ const accountSchema = new Schema({
     },
     password: {
         type: String,
-        required: true
-    },
+        required: true    },
     library: {
         type: [librarySchema],
         required: true
