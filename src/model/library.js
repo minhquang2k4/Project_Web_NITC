@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const wordSchema = require('./wordSchema');
 
 const librarySchema = new Schema({
     title: {
@@ -11,7 +12,7 @@ const librarySchema = new Schema({
         required: true
     },
     word: {
-        type: [String],
+        type: [wordSchema],
         required: true
     },
 });
