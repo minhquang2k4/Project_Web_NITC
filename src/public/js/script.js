@@ -26,7 +26,7 @@ document.querySelector('.flip-card-inner').addEventListener('click', function() 
         current.classList.add('flip');
 });
 
-// JavaScript
+// flip card next and back
 document.querySelector('.inner-next').addEventListener('click', function() {
     const current = document.querySelector('.flip-card');
     current.classList.add('move-next');
