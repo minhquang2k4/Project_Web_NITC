@@ -17,4 +17,3 @@ const wordSchema = new Schema({
 });
 
 module.exports = wordSchema;
-// qweqwe
