@@ -9,6 +9,10 @@ const wordSchema = new Schema({
     meaning: {
         type: String,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
     }
 });
 
