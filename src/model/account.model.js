@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const librarySchema = require('./librarySchema');
+const librarySchema = require('./library.model.js');
 
 const accountSchema = new Schema({
-    username: {
+    email: {
+        type: String,
+        required: true
+    },
+    fullName: {
         type: String,
         required: true
     },
@@ -11,9 +15,12 @@ const accountSchema = new Schema({
         type: String,
         required: true
     },
+    token: {
+        type: String,
+        required: true
+    },
     library: {
         type: [librarySchema],
-        required: true
     }
 });
 

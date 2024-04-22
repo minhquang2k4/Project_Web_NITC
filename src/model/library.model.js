@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const wordSchema = require('./wordSchema');
+const wordSchema = require('./word.model.js');
 
 const librarySchema = new Schema({
     title: {
