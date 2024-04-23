@@ -47,36 +47,39 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">Register</h2>
-                                <form method="POST" action="/auth/register" >
+                                <form method="POST" action="/auth/register">
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="fullName" />
+                                        <input type="text" class="form-control form-control-lg"
+                                            name="fullName" />
                                         <label class="form-label" for="form3Example1cg">Full name</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" />
+                                        <input type="email" class="form-control form-control-lg"
+                                            name="email" />
                                         <label class="form-label" for="form3Example3cg">Email</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="password" id="form3Example4cg"
-                                            class="form-control form-control-lg" name="password" />
+                                        <input type="password" id="password1" class="form-control form-control-lg"
+                                            name="password" />
                                         <label class="form-label" for="form3Example4cg">Password</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="password" id="form3Example4cdg"
-                                            class="form-control form-control-lg" />
+                                        <input type="password" id="password2" class="form-control form-control-lg" />
                                         <label class="form-label" for="form3Example4cdg">Confirm password</label>
                                     </div>
 
                                     <div class="d-flex justify-content-center">
                                         <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                                            id="idForm">Register</button>
                                     </div>
 
                                     <p class="text-center text-muted mt-5 mb-0">Already registered?
-                                        <a href="http://localhost:3000/auth/login" class="fw-bold text-body"><u>Login</u></a>
+                                        <a href="http://localhost:3000/auth/login"
+                                            class="fw-bold text-body"><u>Login</u></a>
                                     </p>
                                 </form>
                             </div>
@@ -86,6 +89,21 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // check password
+        document.getElementById('idForm').addEventListener('submit', function (event) {
+            var password1 = document.getElementById('password1').value;
+            var password2 = document.getElementById('password2').value;
+            alert(password1);
+            alert(password2);
+            if (password1 !== password2) {
+                alert('Passwords do not match!');
+                event.preventDefault(); // Prevent form from submitting
+            }
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

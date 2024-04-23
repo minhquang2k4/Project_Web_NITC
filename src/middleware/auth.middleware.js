@@ -16,5 +16,26 @@ module.exports.requireAuth = async (req, res, next) => {
         return;
     }
 
+    res.locals.user = account;
+    next();
+}
+
+
+module.exports.checkUser = async (req, res, next) => {
+    if (!req.cookies.token) {
+        res.locals.user = null;
+        next();
+        return;
+    }
+
+    const account = await Account.findOne({ token: req.cookies.token });
+
+    if(!account) {
+        res.locals.user = null;
+        next();
+        return;
+    }
+
+    res.locals.user = account;
     next();
 }

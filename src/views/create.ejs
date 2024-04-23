@@ -93,88 +93,27 @@
     <div class="inner-name">
         <div class="container">
             <div class="inner-title" style="margin-top: 50px;">
-                <h2>Tạo học phần mới</h2>
+                <h2>Create a new module</h2>
             </div>
         </div>
     </div>
     <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="name">
-                    <input type="text" placeholder="Tên học phần">
+    <form method="POST" action="/library/create">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="name">
+                        <input type="text" placeholder="Name" name="name" >
+                    </div>
                 </div>
-                <!-- <div class="school" style="margin-bottom: 20px;">
-                    <input type="text" placeholder="Trường của bạn">
-                </div> -->
+                <div class="col-md-6 col-sm-12 " style="margin-bottom: 100px;" >
+                    <input type="text" placeholder="Description" name="description" >
+                </div>
             </div>
-            <div class="col-md-6 col-sm-12 " style="margin-bottom: 100px;" >
-                <input type="text" placeholder="Mô tả học phần">
-            </div>
+            <button class="create-form" type="submit"> Create</button>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="new-word">
-                    <input type="text" placeholder="Từ mới">
-                    <input type="text" placeholder="Nghĩa">
-                    <div class="inner-add">
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-12">
-                <div class="new-word x">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-6">
-                                Từ mới
-                            </div>
-                            <div class="col-6">
-                                Nghiã
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="new-word x">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-6">
-                                Từ mới
-                            </div>
-                            <div class="col-6">
-                                Nghiã
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="new-word x">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-6">
-                                Từ mới
-                            </div>
-                            <div class="col-6">
-                                Nghiã
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+    </form>
+    
 
 
     <div class="footer_container">

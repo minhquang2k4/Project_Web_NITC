@@ -40,3 +40,8 @@ module.exports.postRegister = async (req, res) => {
     await account.save();
     res.redirect('/auth/login');
 }
+
+module.exports.logout = (req, res) => {
+    res.clearCookie('token');
+    res.redirect('/auth/login');
+}

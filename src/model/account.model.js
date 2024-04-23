@@ -20,7 +20,10 @@ const accountSchema = new Schema({
         required: true
     },
     library: {
-        type: [librarySchema],
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Library'
+        }],
     }
 });
 

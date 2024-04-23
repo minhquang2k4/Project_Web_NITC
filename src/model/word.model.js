@@ -11,9 +11,9 @@ const wordSchema = new Schema({
         required: true
     },
     image: {
-        type: String,
-        required: true
+        type: String
     }
 });
 
-module.exports = wordSchema;
+const Word = mongoose.model("Word", wordSchema);
+module.exports = Word;

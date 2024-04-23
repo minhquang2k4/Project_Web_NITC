@@ -112,66 +112,20 @@
   <div class="inner-content" style="margin-bottom: 80px;">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-sm-12 z">
-          <a href="http://localhost:3000/library/detail">
-            <div class="inner-name">
-              Xe cộ
-            </div>
-            <div class="inner-description">
-              các loại xe cộ phổ biến
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-sm-12 z">
-          <a href="http://localhost:3000/library/detail">
-            <div class="inner-name">
-              Xe cộ
-            </div>
-            <div class="inner-description">
-              các loại xe cộ phổ biến
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-sm-12 z">
-          <a href="#">
-            <div class="inner-name">
-              Xe cộ
-            </div>
-            <div class="inner-description">
-              các loại xe cộ phổ biến
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-sm-12 z">
-          <a href="#">
-            <div class="inner-name">
-              Nội thất
-            </div>
-            <div class="inner-description">
-              Các đồ dùng nội thât
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-sm-12 z">
-          <a href="#">
-            <div class="inner-name">
-              Nội thất
-            </div>
-            <div class="inner-description">
-              Các đồ dùng nội thât
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-sm-12 z">
-          <a href="#">
-            <div class="inner-name">
-              Xe cộ
-            </div>
-            <div class="inner-description">
-              các loại xe cộ phổ biến
-            </div>
-          </a>
-        </div>
+
+        <% for(let library of libraries ) { %>
+          <div class="col-md-6 col-sm-12 z">
+            <a href="#">
+              <div class="inner-name">
+                <%= library.title %>
+              </div>
+              <div class="inner-description">
+                <%= library.description %>
+              </div>
+            </a>
+          </div>
+        <% } %>
+        
       </div>
     </div>
   </div>

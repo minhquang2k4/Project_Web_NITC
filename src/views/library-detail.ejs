@@ -137,24 +137,27 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="new-word">
-                    <input type="text" placeholder="Từ mới">
-                    <input type="text" placeholder="Nghĩa">
-                    <div class="inner-add">
-                        <i class="fa-solid fa-plus"></i>
+                <form method="POST" action="/library/detail">
+                    <div class="new-word">
+                        <input type="text" placeholder="New Word" name="word">
+                        <input type="text" placeholder="Meaning" name="mean">
+                        <button class="inner-add" type="submit" style="border: none;"  >
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
                     </div>
-                </div>
+                </form>
             </div>
+
 
             <div class="col-12">
                 <div class="new-word x">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-6">
-                                Từ mới
+                                developer
                             </div>
                             <div class="col-6">
-                                Nghiã
+                                Lập trình viên
                             </div>
                         </div>
                     </div>
@@ -166,25 +169,10 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-6">
-                                Từ mới
+                                Hello
                             </div>
                             <div class="col-6">
-                                Nghiã
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="new-word x">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-6">
-                                Từ mới
-                            </div>
-                            <div class="col-6">
-                                Nghiã
+                                Xin chào
                             </div>
                         </div>
                     </div>
@@ -200,7 +188,7 @@
         <!-- info section -->
         <section class="info_section ">
             <div class="container">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-6 col-lg-4 mx-auto ">
                         <div class="info_detail">
                             <h4>
@@ -250,7 +238,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         <!-- end info section -->

@@ -1,7 +1,7 @@
 // speak 
 let voices = [];
 if ("speechSynthesis" in window) {
-    speechSynthesis.onvoiceschanged = function() {
+    speechSynthesis.onvoiceschanged = function () {
         voices = speechSynthesis.getVoices();
     }
 }
@@ -17,9 +17,9 @@ function speak() {
 }
 
 // flip card
-document.querySelector('.flip-card-inner').addEventListener('click', function() {
+document.querySelector('.flip-card-inner').addEventListener('click', function () {
     const current = document.querySelector('.flip-card-inner');
-    if(current.classList.contains('flip')) {
+    if (current.classList.contains('flip')) {
         current.classList.remove('flip');
     }
     else
@@ -27,7 +27,7 @@ document.querySelector('.flip-card-inner').addEventListener('click', function() 
 });
 
 // flip card next and back
-document.querySelector('.inner-next').addEventListener('click', function() {
+document.querySelector('.inner-next').addEventListener('click', function () {
     const current = document.querySelector('.flip-card');
     current.classList.add('move-next');
     setTimeout(() => {
@@ -35,7 +35,7 @@ document.querySelector('.inner-next').addEventListener('click', function() {
     }, 50);
 });
 
-document.querySelector('.inner-back').addEventListener('click', function() {
+document.querySelector('.inner-back').addEventListener('click', function () {
     const current = document.querySelector('.flip-card');
     current.classList.add('move-back');
     setTimeout(() => {

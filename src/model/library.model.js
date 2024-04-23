@@ -12,10 +12,14 @@ const librarySchema = new Schema({
         required: true
     },
     word: {
-        type: [wordSchema],
-        required: true
-    },
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Word'
+        }],
+    }
 });
 
-module.exports = librarySchema;
 
+const Library = mongoose.model("Library", librarySchema);
+
+module.exports = Library;
