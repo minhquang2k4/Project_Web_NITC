@@ -5,7 +5,6 @@ module.exports.index = async (req, res) => {
     // get all libraries of the account
     const libraries = await Library.find({ _id: { $in: res.locals.user.library } });
     res.render('your-library', { libraries: libraries });
-    
 }
 
 module.exports.detail = (req, res) => {
@@ -46,6 +45,7 @@ module.exports.createLibrary = async (req, res) => {
     // Redirect to the library
     res.redirect('/library');
 }
+
 
 module.exports.createWord = async (req, res) => {
     // Find the library
