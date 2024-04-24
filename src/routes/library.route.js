@@ -11,7 +11,8 @@ router.get('/detail/quizze', controller.quizze);
 
 router.get('/detail/:id', controller.detail);
 
-router.post('/detail/:id', controller.detail);
+router.post('/detail/:id', controller.createWord);
+
 
 router.get('/create', controller.create);
 

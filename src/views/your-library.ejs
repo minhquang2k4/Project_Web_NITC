@@ -61,7 +61,7 @@
                   </div>
                 </li>
               <% } else { %>
-                <li class="nav-item ">
+                <li class="nav-item">
                   <a class="nav-link" href="http://localhost:3000/auth/login">login now!</a>
                 </li>
               <% } %>
@@ -108,7 +108,7 @@
     <div class="row">
       <div class="col-6">
         <div class="inner-title">
-          <h2>Your library</h2>
+          <h2>Your Library</h2>
         </div>
       </div>
       <div class="col-6 add-foder1">
@@ -121,14 +121,13 @@
     </div>
   </div>
 
-
   <div class="inner-content" style="margin-bottom: 80px;">
     <div class="container">
       <div class="row">
 
         <% for(let library of libraries ) { %>
           <div class="col-md-6 col-sm-12 z">
-            <a href="#">
+            <a href="http://localhost:3000/library/detail/<%= library._id %>"></a>
               <div class="inner-name">
                 <%= library.title %>
               </div>

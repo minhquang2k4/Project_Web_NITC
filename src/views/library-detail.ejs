@@ -53,18 +53,20 @@
                             </li>
                             <% if ( user ) { %>
                                 <li class="nav-item ">
-                                  <div class="dropdown">
-                                    <a class="nav-link" href="http://localhost:3000/auth/login"> <%= user.fullName %> </a>
-                                    <div class="dropdown-content">
-                                      <a href="http://localhost:3000/logout">LogOut</a>
+                                    <div class="dropdown">
+                                        <a class="nav-link" href="http://localhost:3000/auth/login">
+                                            <%= user.fullName %>
+                                        </a>
+                                        <div class="dropdown-content">
+                                            <a href="http://localhost:3000/logout">LogOut</a>
+                                        </div>
                                     </div>
-                                  </div>
                                 </li>
-                              <% } else { %>
-                                <li class="nav-item ">
-                                  <a class="nav-link" href="http://localhost:3000/auth/login">login now!</a>
-                                </li>
-                              <% } %>
+                                <% } else { %>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="http://localhost:3000/auth/login">login now!</a>
+                                    </li>
+                                    <% } %>
                         </ul>
                     </div>
                 </nav>
@@ -103,8 +105,13 @@
     </div>
     <div class="inner-name">
         <div class="container">
-            <div class="inner-title" style="margin-top: 50px;">
-                <h2>Your modules</h2>
+            <div class="row">
+                <div class="inner-title" style="margin-top: 50px;">
+                    <h2>Your Library</h2>
+                </div>
+                <!-- <div class="delete-lib">
+                    <i class="fa-solid fa-trash fa-2xl" style="color: #000000;"></i>
+                </div> -->
             </div>
         </div>
     </div>
@@ -113,14 +120,14 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="name" id="name">
-                    Xe cộ
+                    <%= library.title %>
                 </div>
                 <!-- <div class="school" id="school">
                     NEU
                 </div> -->
             </div>
             <div class="col-md-6 col-sm-12" id="description">
-                Các loại xe phổ biến trong thành phố
+                <%= library.description %>
             </div>
         </div>
     </div>
@@ -148,51 +155,56 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form method="POST" action="/library/detail">
+                <form method="POST" action="/library/detail/<%=library._id %>">
                     <div class="new-word">
-                        <input type="text" placeholder="New Word" name="word">
-                        <input type="text" placeholder="Meaning" name="mean">
-                        <button class="inner-add" type="submit" style="border: none;"  >
+                        <input type="hidden" name="imageUrl" id="selected-image-url">
+                        <input id="word-input" type="text" placeholder="New Word" name="word">
+                        <input type="text" placeholder="Meaning" name="meaning">
+                        <button class="inner-add" type="submit" style="border: none;">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
+                    <div class="row"> <!-- Add this line -->
+                        <label>
+                            <input type="radio" name="image" value="image1.jpg">
+                            <img src="/images/image1.jpg" alt="Image 1">
+                        </label>
+                        <label>
+                            <input type="radio" name="image" value="image2.jpg">
+                            <img src="/images/image2.jpg" alt="Image 2">
+                        </label>
+                        <label>
+                            <input type="radio" name="image" value="image3.jpg">
+                            <img src="/images/image3.jpg" alt="Image 3">
+                        </label>
+                        <label>
+                            <input type="radio" name="image" value="image4.jpg">
+                            <img src="/images/image4.jpg" alt="Image 4">
+                        </label>
+                    </div> <!-- Add this line -->
                 </form>
             </div>
 
 
-            <div class="col-12">
-                <div class="new-word x">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-6">
-                                developer
-                            </div>
-                            <div class="col-6">
-                                Lập trình viên
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="new-word x">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-6">
-                                Hello
-                            </div>
-                            <div class="col-6">
-                                Xin chào
+            <% for(let word of words ) { %>
+                <div class="col-12">
+                    <div class="new-word x">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6">
+                                    <%= word.word %>
+                                </div>
+                                <div class="col-6">
+                                    <%= word.meaning %>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <% } %>
 
         </div>
     </div>
-
 
 
     <div class="footer_container">
@@ -254,6 +266,43 @@
         </section>
         <!-- end info section -->
     </div>
+
+    <script>
+        let timeoutId;
+        const imageElements = document.querySelectorAll('form img');
+        // const imageInputs = document.querySelectorAll('form input');
+        const imageInputs = document.querySelectorAll('form input[type="radio"]');
+
+        document.getElementById('word-input').addEventListener('input', function(event) {
+            const word = event.target.value;
+
+            // Clear the previous timeout if there is one
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+
+            // Set a new timeout
+            timeoutId = setTimeout(() => {
+                fetch('https://api.unsplash.com/search/photos?query=' + word + '&client_id=l55829iKZp08bs9XOZnyHyic2hYoGYBvnjfYMpKvHzE')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update the form with the new images
+                        for (let i = 0; i < 4; i++) {
+                            const image = data.results[i];
+                            imageElements[i].src = image.urls.small;
+                            imageInputs[i].value = image.urls.small;
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }, 1000); // Wait for 1 second
+        });
+
+        document.querySelectorAll('form input[type="radio"]').forEach(input => {
+            input.addEventListener('change', function(event) {
+                document.getElementById('selected-image-url').value = event.target.value;
+            });
+        });
+    </script>
 
     <!-- jQery -->
     <script src="/js/jquery-3.4.1.min.js"></script>

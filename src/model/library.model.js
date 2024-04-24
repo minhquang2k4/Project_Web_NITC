@@ -9,7 +9,6 @@ const librarySchema = new Schema({
     },
     description: {
         type: String,
-        required: true
     },
     word: {
         type: [{
