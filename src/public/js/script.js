@@ -33,6 +33,10 @@ document.querySelector('.inner-next').addEventListener('click', function () {
     setTimeout(() => {
         current.classList.remove('move-next');
     }, 50);
+
+    let currentWordIndex = 0;
+    
+
 });
 
 document.querySelector('.inner-back').addEventListener('click', function () {

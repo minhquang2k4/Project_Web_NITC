@@ -21,12 +21,20 @@ module.exports.create = (req, res) => {
     res.render('create');
 }
 
-module.exports.flashcard = (req, res) => {
-    res.render('flashcard');
+module.exports.flashcard = async (req, res) => {
+    const id = req.params.id;
+    const library = await Library.findOne({ _id: id });
+    const words = await Word.find({ _id: { $in: library.word } });
+
+    res.render('flashcard', { library: library, words: words });
 }
 
-module.exports.quizze = (req, res) => {
-    res.render('quizze');
+module.exports.quizze = async (req, res) => {
+    const id = req.params.id;
+    const library = await Library.findOne({ _id: id });
+    const words = await Word.find({ _id: { $in: library.word } });
+
+    res.render('quizze', { library: library, words: words } );
 }
 
 module.exports.createLibrary = async (req, res) => {

@@ -5,9 +5,9 @@ const { route } = require('./auth.route.js');
 
 router.get('/', controller.index);
 
-router.get('/detail/flashcard', controller.flashcard);
+router.get('/detail/:id/flashcard', controller.flashcard);
 
-router.get('/detail/quizze', controller.quizze);
+router.get('/detail/:id/quizze', controller.quizze);
 
 router.get('/detail/:id', controller.detail);
 
