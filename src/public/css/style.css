@@ -1345,3 +1345,19 @@ a {
   background-color: #7335b7;
   color: white;
 }
+
+
+.hide {
+  display: none;
+}
+
+
+.css-title{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.new-word .container-fluid .row {
+  justify-content: space-between;
+}

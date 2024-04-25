@@ -11,8 +11,11 @@ router.get('/detail/quizze', controller.quizze);
 
 router.get('/detail/:id', controller.detail);
 
-router.post('/detail/:id', controller.createWord);
+router.delete('/detail/delete-lib/:id', controller.deleteLibrary);
 
+router.delete('/detail/delete-word/:libID/:wordID', controller.deleteWord);
+
+router.post('/detail/:id', controller.createWord);
 
 router.get('/create', controller.create);
 

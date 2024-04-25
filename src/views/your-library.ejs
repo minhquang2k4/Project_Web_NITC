@@ -125,9 +125,11 @@
     <div class="container">
       <div class="row">
 
+
+
         <% for(let library of libraries ) { %>
           <div class="col-md-6 col-sm-12 z">
-            <a href="http://localhost:3000/library/detail/<%= library._id %>"></a>
+            <a href="http://localhost:3000/library/detail/<%= library._id %>">
               <div class="inner-name">
                 <%= library.title %>
               </div>

@@ -105,13 +105,13 @@
     </div>
     <div class="inner-name">
         <div class="container">
-            <div class="row">
+            <div class="css-title">
                 <div class="inner-title" style="margin-top: 50px;">
                     <h2>Your Library</h2>
                 </div>
-                <!-- <div class="delete-lib">
-                    <i class="fa-solid fa-trash fa-2xl" style="color: #000000;"></i>
-                </div> -->
+                <form class="delete-lib" action="/library/detail/delete-lib/<%=library._id %>?_method=DELETE" method="POST" style="margin-top: 60px;">
+                    <button type="submit" style="border: none; background-color: white; " > <i class="fa-solid fa-trash fa-2xl" style="color: #000000;"> </i></button>
+                </form>
             </div>
         </div>
     </div>
@@ -165,19 +165,19 @@
                         </button>
                     </div>
                     <div class="row"> <!-- Add this line -->
-                        <label>
+                        <label class="hide">
                             <input type="radio" name="image" value="image1.jpg">
                             <img src="/images/image1.jpg" alt="Image 1">
                         </label>
-                        <label>
+                        <label class="hide">
                             <input type="radio" name="image" value="image2.jpg">
                             <img src="/images/image2.jpg" alt="Image 2">
                         </label>
-                        <label>
+                        <label class="hide">
                             <input type="radio" name="image" value="image3.jpg">
                             <img src="/images/image3.jpg" alt="Image 3">
                         </label>
-                        <label>
+                        <label class="hide">
                             <input type="radio" name="image" value="image4.jpg">
                             <img src="/images/image4.jpg" alt="Image 4">
                         </label>
@@ -185,17 +185,21 @@
                 </form>
             </div>
 
-
             <% for(let word of words ) { %>
                 <div class="col-12">
                     <div class="new-word x">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-5" style="margin-left: 20px;">
                                     <%= word.word %>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-5">
                                     <%= word.meaning %>
+                                </div>
+                                <div style="margin-right: 20px;" >
+                                    <form class="delete-lib" action="/library/detail/delete-word/<%=library._id%>/<%=word._id%>?_method=DELETE" method="POST" >
+                                        <button type="submit" style="border: none; background-color: white; "> <i class="fa-solid fa-xmark"></i> </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -270,17 +274,62 @@
     <script>
         let timeoutId;
         const imageElements = document.querySelectorAll('form img');
-        // const imageInputs = document.querySelectorAll('form input');
         const imageInputs = document.querySelectorAll('form input[type="radio"]');
-
+        const labels = document.querySelectorAll('label');
+    
         document.getElementById('word-input').addEventListener('input', function(event) {
             const word = event.target.value;
-
+    
             // Clear the previous timeout if there is one
             if (timeoutId) {
                 clearTimeout(timeoutId);
             }
+    
+            // Set a new timeout
+            timeoutId = setTimeout(() => {
+                if (word) {
+                    fetch('https://api.unsplash.com/search/photos?query=' + word + '&client_id=l55829iKZp08bs9XOZnyHyic2hYoGYBvnjfYMpKvHzE')
+                        .then(response => response.json())
+                        .then(data => {
+                            // Update the form with the new images
+                            for (let i = 0; i < 4; i++) {
+                                const image = data.results[i];
+                                imageElements[i].src = image.urls.small;
+                                imageInputs[i].value = image.urls.small;
+                            }
+    
+                            // Remove the 'hide' class from the labels
+                            labels.forEach(label => label.classList.remove('hide'));
+                        })
+                        .catch(error => console.error('Error:', error));
+                } else {
+                    // Add the 'hide' class to the labels
+                    labels.forEach(label => label.classList.add('hide'));
+                }
+            }, 500); // Wait
+        });
+    
+        document.querySelectorAll('form input[type="radio"]').forEach(input => {
+            input.addEventListener('change', function(event) {
+                document.getElementById('selected-image-url').value = event.target.value;
+            });
+        });
+    </script>
 
+    <!-- <script>
+        let timeoutId;
+        const imageElements = document.querySelectorAll('form img');
+        const imageInputs = document.querySelectorAll('form input[type="radio"]');
+        const labels = document.querySelectorAll('label');
+    
+        document.getElementById('word-input').addEventListener('input', function(event) {
+            const word = event.target.value;
+    
+            // Clear the previous timeout if there is one
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+    
             // Set a new timeout
             timeoutId = setTimeout(() => {
                 fetch('https://api.unsplash.com/search/photos?query=' + word + '&client_id=l55829iKZp08bs9XOZnyHyic2hYoGYBvnjfYMpKvHzE')
@@ -292,17 +341,19 @@
                             imageElements[i].src = image.urls.small;
                             imageInputs[i].value = image.urls.small;
                         }
+                        // Remove the 'hide' class from the labels
+                        labels.forEach(label => label.classList.remove('hide'));
                     })
                     .catch(error => console.error('Error:', error));
             }, 1000); // Wait for 1 second
         });
-
+    
         document.querySelectorAll('form input[type="radio"]').forEach(input => {
             input.addEventListener('change', function(event) {
                 document.getElementById('selected-image-url').value = event.target.value;
             });
         });
-    </script>
+    </script> -->
 
     <!-- jQery -->
     <script src="/js/jquery-3.4.1.min.js"></script>
