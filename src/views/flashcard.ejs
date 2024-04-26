@@ -131,8 +131,7 @@
             </h3>
         </div>
         <div class="row">
-            <a href="#" class="col-3" id="flashcard"
-                style="background-color: #7335b7; color: #fff;">
+            <a href="#" class="col-3" id="flashcard" style="background-color: #7335b7; color: #fff;">
                 <h4 style="padding-top: 7px;">
                     Flashcard
                 </h4>
@@ -148,26 +147,30 @@
     <div class="inner-flastcard">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                     <div class="flip-card">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front" id="text-to-speech"  >
-                                <h1>
-                                    <%= words[0].word %>
-                                </h1>
+                            <div class="flip-card-front" id="text-to-speech">
+                                <div class="col-6">
+                                    <h1>
+                                        <%= words[0].word %>
+                                    </h1>
+                                </div>
                             </div>
                             <div class="flip-card-back">
-                                <h1>
-                                    <%= words[0].meaning %>
-                                </h1>
+                                <div class="col-6">
+                                    <h1>
+                                        <%= words[0].meaning %>
+                                    </h1>
+                                </div>
+                                <div class="col-6" id="image-word">
+                                    <img src="<%= words[0].image %>" alt="<%= words[0].word %>">
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-      
-            <div id="image-word">
-                <img src="<%= words[0].image %>" alt="">
             </div>
 
             <div class="row">
@@ -258,9 +261,16 @@
             if (currentWordIndex >= words.length) {
                 currentWordIndex = 0; // Loop back to the first word if we've gone past the last word
             }
-            document.querySelector('.flip-card-front h1').textContent = words[currentWordIndex].word ;
-            document.querySelector('.flip-card-back h1').textContent = words[currentWordIndex].meaning ;
-            document.querySelector('#image-word img').src = words[currentWordIndex].image;
+            document.querySelector('.flip-card-front h1').textContent = words[currentWordIndex].word;
+            document.querySelector('.flip-card-back h1').textContent = words[currentWordIndex].meaning;
+            const imageWord = document.querySelector('#image-word');
+            if (words[currentWordIndex].image === "") {
+                imageWord.classList.add('hide');
+            } else {
+                imageWord.classList.remove('hide');
+                imageWord.querySelector('img').src = words[currentWordIndex].image;
+                imageWord.querySelector('img').alt = words[currentWordIndex].word;
+            }
 
         });
 
@@ -269,11 +279,17 @@
             if (currentWordIndex < 0) {
                 currentWordIndex = words.length - 1; // Loop back to the last word if we've gone past the first word
             }
-            document.querySelector('.flip-card-front h1').textContent = words[currentWordIndex].word ;
-            document.querySelector('.flip-card-back h1').textContent = words[currentWordIndex].meaning ;
-            document.querySelector('#image-word img').src = words[currentWordIndex].image;
+            document.querySelector('.flip-card-front h1').textContent = words[currentWordIndex].word;
+            document.querySelector('.flip-card-back h1').textContent = words[currentWordIndex].meaning;
+            const imageWord = document.querySelector('#image-word');
+            if (words[currentWordIndex].image === "") {
+                imageWord.classList.add('hide');
+            } else {
+                imageWord.classList.remove('hide');
+                imageWord.querySelector('img').src = words[currentWordIndex].image;
+                imageWord.querySelector('img').alt = words[currentWordIndex].word;
+            }
         });
-
     </script>
 
     <!-- jQery -->

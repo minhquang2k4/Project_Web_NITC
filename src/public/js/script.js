@@ -29,20 +29,24 @@ document.querySelector('.flip-card-inner').addEventListener('click', function ()
 // flip card next and back
 document.querySelector('.inner-next').addEventListener('click', function () {
     const current = document.querySelector('.flip-card');
+    const flipCardInner = document.querySelector('.flip-card-inner');
     current.classList.add('move-next');
+    flipCardInner.classList.add('no-transition');
     setTimeout(() => {
         current.classList.remove('move-next');
+        flipCardInner.classList.remove('no-transition'); 
     }, 50);
-
-    let currentWordIndex = 0;
-    
-
+    flipCardInner.classList.remove('flip');
 });
 
 document.querySelector('.inner-back').addEventListener('click', function () {
     const current = document.querySelector('.flip-card');
+    const flipCardInner = document.querySelector('.flip-card-inner');
     current.classList.add('move-back');
+    flipCardInner.classList.add('no-transition');
     setTimeout(() => {
         current.classList.remove('move-back');
+        flipCardInner.classList.remove('no-transition');
     }, 50);
+    flipCardInner.classList.remove('flip');
 });
