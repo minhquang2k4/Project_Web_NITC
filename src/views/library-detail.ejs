@@ -158,8 +158,8 @@
                 <form method="POST" action="/library/detail/<%=library._id %>">
                     <div class="new-word" id="cssword">
                         <input type="hidden" name="imageUrl" id="selected-image-url">
-                        <input id="word-input" type="text" placeholder="New Word" name="word">
-                        <input type="text" placeholder="Meaning" name="meaning">
+                        <input id="word-input" type="text" placeholder="New Word" name="word" required>
+                        <input type="text" placeholder="Meaning" name="meaning" required>
                         <button class="inner-add" type="submit" style="border: none;">
                             <i class="fa-solid fa-plus"></i>
                         </button>
