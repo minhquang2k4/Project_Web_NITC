@@ -1396,3 +1396,8 @@ a {
   padding: 10px 0px;
 }
 
+#notee{
+  display: none;
+  margin-top: 15px;
+  margin-left: 25px;
+}

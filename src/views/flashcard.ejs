@@ -136,13 +136,23 @@
                     Flashcard
                 </h4>
             </a>
-            <a href="http://localhost:3000/library/detail/<%=library._id %>/quizze" class="col-3" id="quizzes" 
-                <% if (words.length < 4) { %> style="pointer-events: none; opacity: 0.5;" <% } %> 
-            >
-                <h4 style="padding-top: 7px;">
-                    Quizzes
-                </h4>
-            </a>
+            <% if (words.length < 4) { %>
+                <a class="col-3" id="quizzes" 
+                  style="cursor: pointer;opacity: 0.3;" onclick="displayNotice()" > 
+                    <h4 style="padding-top: 7px;">
+                        Quizzes
+                    </h4>
+                </a>
+                <h4 id="notee"> You needs at least 4 words  </h4>
+                <%}
+                else{%>
+                    <a href="http://localhost:3000/library/detail/<%=library._id %>/quizze" class="col-3" id="quizzes">
+                        <h4 style="padding-top: 7px;">
+                            Quizzes
+                        </h4>
+                    </a>
+                <%}
+            %> 
         </div>
     </div>
 
@@ -255,6 +265,12 @@
     </div>
 
     <script>
+        function displayNotice() {
+            document.getElementById("notee").style.display = "block";
+            setTimeout(function() {
+                document.getElementById("notee").style.display = "none";
+            }, 1000);
+        }
         let currentWordIndex = 0;
         const words = <%- JSON.stringify(words) %>;
 
