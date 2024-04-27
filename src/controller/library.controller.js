@@ -1,8 +1,6 @@
-const e = require('express');
 const Account = require('../model/account.model.js');
 const Library = require('../model/library.model.js');
 const Word = require('../model/word.model.js');
-const mongoose = require('mongoose');
 
 
 module.exports.index = async (req, res) => {
