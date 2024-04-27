@@ -1021,13 +1021,14 @@ a {
 #name {
   border-radius: 10px;
   width: 90%;
-  padding-left: 10px;
+  padding-left: 30px;
   margin-bottom: 20px;
   height: 130px;
   background-color: white;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+  font-weight: 900;
 }
 /* 
 #school {
@@ -1045,12 +1046,13 @@ a {
 #description {
   border-radius: 10px;
   width: 100%;
-  padding-left: 10px;
+  padding-left: 30px;
   height: 130px;
   margin-bottom: 70px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+
 }
 
 #flashcard {
@@ -1241,10 +1243,12 @@ a {
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   position: relative;
+  align-items: center;
 }
 
 .card-inner h1 {
   margin: auto;
+  margin-left: 30%;
 }
 
 .card-inner i{
@@ -1391,3 +1395,4 @@ a {
 #cssword{
   padding: 10px 0px;
 }
+

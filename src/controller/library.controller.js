@@ -1,3 +1,4 @@
+const e = require('express');
 const Account = require('../model/account.model.js');
 const Library = require('../model/library.model.js');
 const Word = require('../model/word.model.js');
@@ -52,7 +53,6 @@ module.exports.quizze = async (req, res) => {
         const id = req.params.id;
         const library = await Library.findOne({ _id: id });
         const words = await Word.find({ _id: { $in: library.word } });
-    
         res.render('quizze', { library: library, words: words } );
     }
     catch(err){
