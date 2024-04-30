@@ -280,7 +280,7 @@
                 }
             }
 
-            document.querySelector('#text-to-speech h1').textContent = correctWord.word;
+            document.querySelector('#text-to-speech h1').textContent = correctWord.meaning;
             if (correctWord.image){
                 document.querySelector('#image-word img').src = correctWord.image; // Update the image
                 document.querySelector('#image-word img').classList.remove('hide');
@@ -294,13 +294,13 @@
             allWords.sort(() => Math.random() - 0.5); // Shuffle the words
 
             for (let i = 0; i < answers.length; i++) {
-                answers[i].querySelector('h4').textContent = allWords[i].meaning;
+                answers[i].querySelector('h4').textContent = allWords[i].word;
             }
         }
 
         answers.forEach(answer => {
             answer.addEventListener('click', function () {
-                if (this.querySelector('h4').textContent === correctWord.meaning) {
+                if (this.querySelector('h4').textContent === correctWord.word) {
                     this.style.backgroundColor = 'green';
                     currentWordIndex++;
                     setTimeout(() => {
