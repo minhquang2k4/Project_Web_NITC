@@ -1401,3 +1401,78 @@ a {
   margin-top: 15px;
   margin-left: 25px;
 }
+
+#chatbox {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  background: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  display: none;
+  z-index: 9999;
+}
+
+#chatbox.chatbox-closed .chatbox-content,
+#chatbox.chatbox-closed .chatbox-input {
+  display: none;
+}
+
+#chatbox.chatbox-closed {
+  display: block;
+}
+
+.chatbox-header {
+  padding: 10px;
+  background:  #7335b7;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  border: #0c0c0c solid 1px;
+}
+
+.chatbox-content {
+  height: 300px;
+  overflow-y: scroll;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.chatbox-input {
+  padding: 10px;
+}
+
+.chatbox-input form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#chatbox h5 {
+  margin-top: 3px;
+  margin-bottom: -1px;
+}
+
+.chatbox-input textarea {
+  width: 80%;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#Send{
+  background-color: #7335b7;
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.chatbox-content div {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
