@@ -1443,7 +1443,7 @@ a {
   padding: 10px;
 }
 
-.chatbox-input form {
+.chatbox-input .form {
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -27,7 +27,6 @@ module.exports.postChat = async (req, res) => {
 
         const library = await Library.findById(libraryId);
 
-        // Get the chat history
         const history = await chatHistory.findById(library.chatId);
 		const simplifiedHistory = history ? history.history.map(item => ({
 			role: item.role,

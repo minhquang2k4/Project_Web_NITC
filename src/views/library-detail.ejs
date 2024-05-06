@@ -20,81 +20,24 @@
     <link href="/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="/css/responsive.css" rel="stylesheet" />
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            const libraryId = '<%= library._id %>';
-            const chatboxContent = document.querySelector('#chatbox .chatbox-content');
-            const chatboxInput = document.querySelector('#chatbox .chatbox-input');
-            chatboxContent.style.display = 'none';
-            chatboxInput.style.display = 'none';
-            fetch(`/gemini/${libraryId}`)
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(message => {
-                        const div = document.createElement('div');
-                        div.innerHTML = `<strong>${message.role}</strong>: ${message.parts[0].text}`;
-                        chatboxContent.appendChild(div);
-                    });
-                })
-                .catch(error => console.error('Error:', error));
-        });
 
-        document.querySelector('#chatbox form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const libraryId = '<%= library._id %>';
-            const message = document.querySelector('#chatbox textarea').value;
-            const chatboxContent = document.querySelector('#chatbox .chatbox-content');
-            const div = document.createElement('div');
-            div.innerHTML = `<strong>User</strong>: ${message}`;
-            chatboxContent.appendChild(div);
-            document.querySelector('#chatbox textarea').value = '';
-            fetch(`/gemini`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ message: message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const div = document.createElement('div');
-                div.innerHTML = `<strong>${data.role}</strong>: ${data.parts[0].text}`;
-                chatboxContent.appendChild(div);
-                window.location.href = `/library/detail/${libraryId}`;
-            })
-            .catch(error => console.error('Error:', error));
-        });
-
-
-        function toggleChatbox() {
-            var chatboxContent = document.querySelector('#chatbox .chatbox-content');
-            var chatboxInput = document.querySelector('#chatbox .chatbox-input');
-            if (chatboxContent.style.display === 'none') {
-                chatboxContent.style.display = 'block';
-                chatboxInput.style.display = 'block';
-            } else {
-                chatboxContent.style.display = 'none';
-                chatboxInput.style.display = 'none';
-            }
-        }
-    </script>
 </head>
 
-<body>  
+<body>
     <script src="https://kit.fontawesome.com/0c88e329f8.js" crossorigin="anonymous"></script>
     <div id="chatbox" class="chatbox-closed">
         <div class="chatbox-header" onclick="toggleChatbox()">
             <h5>Ask me something</h5>
         </div>
         <div class="chatbox-content">
-      
+
         </div>
         <div class="chatbox-input">
-            <form action="/gemini" method="post">
+            <div class="form">
                 <input type="hidden" name="libraryId" value="<%= library._id %>">
                 <textarea placeholder="Type a message..." name="msg"></textarea>
-                <button id="Send" type="submit">Send</button>
-            </form>
+                <button id="Send" type="button">Send</button>
+            </div>
         </div>
     </div>
 
@@ -372,7 +315,6 @@
     </div>
 
     <script>
-
         function displayNotice(num) {
             document.getElementById("notee").innerHTML = "You need at least " + num + " words";
             document.getElementById("notee").style.display = "block";
@@ -398,7 +340,8 @@
             // Set a new timeout
             timeoutId = setTimeout(() => {
                 if (word) {
-                    fetch('https://api.unsplash.com/search/photos?query=' + word + '&client_id=l55829iKZp08bs9XOZnyHyic2hYoGYBvnjfYMpKvHzE')
+                    fetch('https://api.unsplash.com/search/photos?query=' + word +
+                            '&client_id=l55829iKZp08bs9XOZnyHyic2hYoGYBvnjfYMpKvHzE')
                         .then(response => response.json())
                         .then(data => {
                             // Update the form with the new images
@@ -439,10 +382,78 @@
     <!-- popper js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
+    </script>
     <!-- bootstrap js -->
     <script src="/js/bootstrap.js"></script>
     <script src="/js/custom.js"></script>
-</body>
+    <script>
+        document.querySelector('#chatbox textarea').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default action (creating a new line)
+                document.querySelector('#Send').click(); // Click the "Send" button
+            }
+        });
+        window.addEventListener('DOMContentLoaded', function () {
+            const libraryId = '<%= library._id %>';
+            const chatboxContent = document.querySelector('#chatbox .chatbox-content');
+            const chatboxInput = document.querySelector('#chatbox .chatbox-input');
+            chatboxContent.style.display = 'none';
+            chatboxInput.style.display = 'none';
+            fetch(`/gemini/${libraryId}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(message => {
+                        const div = document.createElement('div');
+                        div.innerHTML =
+                            `<strong>${message.role}</strong>: ${message.parts[0].text}`;
+                        chatboxContent.appendChild(div);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
 
+        document.querySelector("#chatbox #Send").addEventListener('click', () => {
+            const libraryId = '<%= library._id %>';
+            const message = document.querySelector('#chatbox textarea').value;
+            const chatboxContent = document.querySelector('#chatbox .chatbox-content');
+            const div = document.createElement('div');
+            div.innerHTML = `<strong>User</strong>: ${message}`;
+            chatboxContent.appendChild(div);
+            document.querySelector('#chatbox textarea').value = '';
+            chatboxContent.scrollTop = chatboxContent.scrollHeight;
+            fetch(`/gemini`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        msg: message,
+                        libraryId: libraryId
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const div = document.createElement('div');
+                    div.innerHTML = `<strong>${data[1].role}</strong>: ${data[1].parts[0].text}`;
+                    chatboxContent.appendChild(div);
+                    chatboxContent.scrollTop = chatboxContent.scrollHeight;
+                })
+                .catch(error => console.error('Error:', error));
+        })
+
+
+        function toggleChatbox() {
+            var chatboxContent = document.querySelector('#chatbox .chatbox-content');
+            var chatboxInput = document.querySelector('#chatbox .chatbox-input');
+            if (chatboxContent.style.display === 'none') {
+                chatboxContent.style.display = 'block';
+                chatboxInput.style.display = 'block';
+            } else {
+                chatboxContent.style.display = 'none';
+                chatboxInput.style.display = 'none';
+            }
+            chatboxContent.scrollTop = chatboxContent.scrollHeight;
+        }
+    </script>
+</body>
 </html>
