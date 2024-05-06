@@ -41,13 +41,14 @@
 
         document.querySelector('#chatbox form').addEventListener('submit', function(event) {
             event.preventDefault();
+            const libraryId = '<%= library._id %>';
             const message = document.querySelector('#chatbox textarea').value;
             const chatboxContent = document.querySelector('#chatbox .chatbox-content');
             const div = document.createElement('div');
             div.innerHTML = `<strong>User</strong>: ${message}`;
             chatboxContent.appendChild(div);
             document.querySelector('#chatbox textarea').value = '';
-            fetch(`/gemini/${libraryId}`, {
+            fetch(`/gemini`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -59,10 +60,10 @@
                 const div = document.createElement('div');
                 div.innerHTML = `<strong>${data.role}</strong>: ${data.parts[0].text}`;
                 chatboxContent.appendChild(div);
+                window.location.href = `/library/detail/${libraryId}`;
             })
             .catch(error => console.error('Error:', error));
         });
-
 
 
         function toggleChatbox() {
@@ -89,7 +90,7 @@
       
         </div>
         <div class="chatbox-input">
-            <form action="/gemini/" method="post">
+            <form action="/gemini" method="post">
                 <input type="hidden" name="libraryId" value="<%= library._id %>">
                 <textarea placeholder="Type a message..." name="msg"></textarea>
                 <button id="Send" type="submit">Send</button>
