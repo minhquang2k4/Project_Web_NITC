@@ -29,6 +29,10 @@ module.exports.postRegister = async (req, res) => {
     const name = req.body.fullName;
     const email = req.body.email;
     const password = req.body.password;
+    if(await Account.findOne({email: email})) {
+        res.redirect('/auth/register');
+        return;
+    }
 
     const account = new Account({
         email: email,

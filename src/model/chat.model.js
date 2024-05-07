@@ -21,7 +21,7 @@ const ChatHistorySchema = new mongoose.Schema({
     maxOutputTokens: Number
   }
 });
-
+ 
 const chatHistory = mongoose.model('ChatHistory', ChatHistorySchema);
 
 module.exports = chatHistory;
